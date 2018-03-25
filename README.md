@@ -7,7 +7,9 @@ Pour cela nous avons choisi comme moyen de développement les outils suivant :
 *	Le Framework JS coté client : un mélange entre jQuery et JavaScript standard
 
 # Pourquoi le choix du Socket.io ?
- Socket.io permet la communication entre le serveur et le client d’une manière bilatéral synchrone en temps réel. C’est-à-dire que le serveur peut aussi envoyer des requêtes au client.
+ Socket.io permet la communication entre le serveur et le client d’une manière bilatéral synchrone en temps réel. C’est-à-dire que le serveur peut aussi envoyer des requêtes au client et vice versas.
+ Il fonctionne sur toutes les plates-formes, tous les navigateurs et tous les appareils, en se concentrant également sur la fiabilité et la rapidité.
+ 
 # Installation :
 Tout a d’abord, il faut vérifier que node.js et npm (node package manager) sont bien installés.
 1.	Installer les ressources du projet sur Git :
