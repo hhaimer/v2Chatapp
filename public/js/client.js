@@ -5,47 +5,45 @@
 	var socket = io.connect('http://localhost:8080'); //Etablie la connection avec le serveur
 	var msgtpl = $('#msgtpl').html() 
 	var lastusr = false //Separer entre les messages des utilisateurs
+
 	$('#msgtpl').remove()
 
 	/**
 	 * Identification (Login/Mail)
 	 */
 	 $('#loginform').submit(function(event){
-
 	 	event.preventDefault(); //Ne pas echaper le login
-
-	 	socket.emit('login',{
+	 	socket.emit('login',{			
 	 		username : $('#username').val()
-	
 	 	})
 	 });
 
 	 //Echaper le login lorque vous remplissez les champs
-	 socket.on('logged',function(){
+	 socket.on('logged',function(user){
 
-	 	if( $('#username').val() !== ""){
 	 		$('.body').fadeOut()
 	 		$('.grad').fadeOut()
 	 		$('.header').fadeOut()
 	 		$('.login').fadeOut()
 	 		$('#login').fadeOut()
 	 		$('#message').focus('')
-	 	}else{
-	 		alert("Champ non rempli. Ressayez")
-	 	}
-
 	 })
-
 	/**
 	 * Gestion des connectés
 	 */
 	 socket.on('newusr', function(user){
-		//$('#users').append('<img src="' + user.avatar + '" id="' + user.id + '">')
-				$('#users').append('<img src="img/user.png" id="' + user.username + '">')
-				$('#users').append('<h6 style="color:white; text-align:center" id="' + user.username + '">'+ user.username.toUpperCase() +'</h6>')	 // Nouvelle Connexion 
-			})
+	
+		$('#messages').append('<div class="sep"></div>')
+		$('#messages').append('<h6 style="color : green; margin-left:15px">'+ '<strong>' +user.username +'</strong>' + ' is connected</h6>')
+		$('#users').append('<img src="img/user.png" id="' + user.username + '">')
+		$('#users').append('<h6 style="color:white; text-align:center" id="' + user.username + '">'+ user.username.toUpperCase() +'</h6>')	 // Nouvelle Connexion 
+				
+	})
 	socket.on('alerte',function(user){
 		alert("Nom d utilisateur deja utilise")
+	})
+	socket.on('alerte2',function(user){
+		alert("Champ vide")
 	})
 	/**
 	 * Envoi de message
@@ -68,6 +66,8 @@
 	})
 	 //Deconnexion d'un utilisateur
 	 socket.on('disusr',function(user){
+		$('#messages').append('<div class="sep"></div>')
+		$('#messages').append('<h6 style="color : red; margin-left:15px">'+ '<strong>' +user.username +'</strong>' + ' is disconnected</h6>')
 	 	$('#'+user.username).remove()
 		$('#'+user.username).remove() 
 	})
