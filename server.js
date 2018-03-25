@@ -46,7 +46,7 @@ io.sockets.on('connection', function(socket){
 				}else{
 					var test = 0
 					for(var k in users){
-						if(me.username === users[k].username){
+						if(me.username.toUpperCase() === users[k].username.toUpperCase()){
 							test = 1 
 						}
 					}
