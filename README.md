@@ -12,9 +12,9 @@ Pour cela nous avons choisi comme moyen de développement les outils suivant :
 Tout a d’abord, il faut vérifier que node.js et npm (node package manager) sont bien installés.
 1.	Installer les ressources du projet sur Git :
 
-$ git clone https://github.com/hhaimer/v2AppChat.git
+$ git clone https://github.com/hhaimer/v2Chatapp.git
 
-2.	Sur l’invite de commande, vous vous déplacez dans le dossier ‘appweb’ et vous installez les dépendances mentionner sur le fichier Package.json
+2.	Sur l’invite de commande, vous vous déplacez dans le dossier ‘v2Chatapp’ et vous installez les dépendances mentionner sur le fichier Package.json
 
 $ npm install
 
